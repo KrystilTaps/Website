@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krystil A. Tapanan | BSIT 3rd Year Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    colors: {
+                        cyber: {
+                            bg: '#070a14',
+                            card: '#111827',
+                            cyan: '#38bdf8',
+                            emerald: '#34d399',
+                            purple: '#a78bfa',
+                            pink: '#f472b6',
+                            amber: '#fbbf24'
+                        }
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 25px rgba(56, 189, 248, 0.35)',
+                        'neon-emerald': '0 0 25px rgba(52, 211, 153, 0.35)',
+                        'neon-pink': '0 0 25px rgba(244, 114, 182, 0.35)',
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #070a14;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.2);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070a14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #38bdf8;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.06); }
+        }
+        .animate-glow {
+            animation: pulseGlow 6s infinite ease-in-out;
+        }
+    </style>
+
+    <style id="fx-style">
+        html{scroll-behavior:smooth}
+        #boot{position:fixed;inset:0;z-index:9999;background:rgba(5,7,15,0.95);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;transition:opacity .5s,visibility .5s}
+        #boot.off{opacity:0;visibility:hidden;pointer-events:none}
+        #boot .term{width:min(92vw,560px);font-family:'Fira Code',monospace;font-size:13px;line-height:1.9;color:#7dd3fc}
+        #boot .ln{opacity:0;transform:translateX(-10px);transition:all .25s}
+        #boot .ln.on{opacity:1;transform:none}
+        #boot .ln b{color:#34d399;font-weight:500}
+        .bootbar{height:6px;background:#1e293b;border-radius:6px;overflow:hidden;margin-top:18px}
+        .bootbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#38bdf8,#f472b6,#34d399);transition:width .2s}
+        #bootskip{position:absolute;right:18px;bottom:18px;font:500 12px 'Fira Code',monospace;color:#94a3b8;border:1px solid #334155;background:transparent;border-radius:8px;padding:8px 14px;cursor:pointer}
+        #bootskip:hover{color:#fff;border-color:#38bdf8}
+        #prog{position:fixed;top:0;left:0;height:3px;width:0;z-index:9000;background:linear-gradient(90deg,#38bdf8,#f472b6,#34d399);box-shadow:0 0 12px #38bdf8}
+        #net{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+        .rv{opacity:0;transform:translateY(38px) scale(.97);transition:opacity .85s cubic-bezier(.2,.8,.2,1),transform .85s cubic-bezier(.2,.8,.2,1)}
+        .rv.in{opacity:1;transform:none}
+        .glass-card:not(.fixed):not(.absolute){position:relative}
+        .glass-card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(56,189,248,.17),transparent 60%)}
+        .glass-card:hover::after{opacity:1}
+        @keyframes hue{to{filter:hue-rotate(360deg)}}
+        #hero h1 span.bg-clip-text{display:inline-block;animation:hue 9s linear infinite}
+        .caret{color:#fbbf24;animation:blink 1s steps(2) infinite;margin-left:2px}
+        @keyframes blink{50%{opacity:0}}
+        @keyframes floaty{50%{transform:translateY(-8px)}}
+        #hero .fa-graduation-cap{animation:floaty 3s ease-in-out infinite;display:inline-block}
+        .fxbtn{cursor:pointer;font:inherit}
+        /* ticker */
+        .tick{overflow:hidden;white-space:nowrap;border-block:1px solid rgba(56,189,248,.2);background:rgba(56,189,248,.05);padding:14px 0;margin:10px 0 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+        .tick div{display:inline-block;animation:mq 26s linear infinite;font-family:'Fira Code',monospace;font-weight:700;letter-spacing:.15em;color:#7dd3fc;font-size:.95rem}
+        .tick:hover div{animation-play-state:paused}
+        @keyframes mq{to{transform:translateX(-50%)}}
+        /* story timeline */
+        .tl{position:relative;padding-left:60px}
+        .tl::before{content:"";position:absolute;left:19px;top:6px;bottom:6px;width:3px;background:#1e293b;border-radius:3px}
+        .tl-fill{position:absolute;left:19px;top:6px;width:3px;height:0;background:linear-gradient(#38bdf8,#f472b6,#34d399);border-radius:3px;box-shadow:0 0 14px #38bdf8}
+        .ch{position:relative;margin-bottom:34px}
+        .ch .dot{position:absolute;left:-60px;top:12px;width:42px;height:42px;border-radius:50%;background:#0b1020;border:3px solid #334155;display:grid;place-items:center;font-size:18px;transition:all .5s}
+        .ch.lit .dot{border-color:#38bdf8;box-shadow:0 0 22px rgba(56,189,248,.75);transform:scale(1.12)}
+        .ch.now .dot{border-color:#f472b6;animation:ping 2s ease-out infinite}
+        @keyframes ping{0%{box-shadow:0 0 0 0 rgba(244,114,182,.7)}100%{box-shadow:0 0 0 18px rgba(244,114,182,0)}}
+        .ch .tag{font-family:'Fira Code',monospace;font-size:.75rem;color:#f472b6;letter-spacing:.15em}
+        .ch h3{font-size:1.4rem;font-weight:800;color:#fff;margin:4px 0 8px}
+        .ch p{color:#cbd5e1;line-height:1.7;margin:0}
+        .ch .here{background:#f472b6;color:#0b1020;font-weight:800;font-size:.7rem;padding:2px 10px;border-radius:99px;margin-left:8px;vertical-align:middle}
+        #toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);z-index:9600;background:rgba(17,24,39,.95);border:1px solid #38bdf8;color:#e2e8f0;padding:12px 22px;border-radius:14px;box-shadow:0 0 30px rgba(56,189,248,.35);opacity:0;pointer-events:none;transition:all .4s;max-width:90vw;text-align:center;font-size:.95rem}
+        #toast.on{opacity:1;transform:translate(-50%,0)}
+        #totop{position:fixed;right:20px;bottom:24px;width:54px;height:54px;z-index:9000;border:0;background:rgba(17,24,39,.9);border-radius:50%;cursor:pointer;display:grid;place-items:center;color:#38bdf8;font-size:18px;opacity:0;visibility:hidden;transform:scale(.7);transition:all .35s}
+        #totop.on{opacity:1;visibility:visible;transform:none}
+        #totop svg{position:absolute;inset:0;transform:rotate(-90deg)}
+        header nav a.nav-active{color:#38bdf8!important;text-shadow:0 0 12px rgba(56,189,248,.7)}
+        #confetti{position:fixed;inset:0;width:100%;height:100%;z-index:9700;pointer-events:none}
+        /* skills: pop out of nowhere */
+        .sk-hide{opacity:0!important;transform:scale(0)!important;transition:none!important}
+        .sk-pop{animation:skPop .9s cubic-bezier(.2,.9,.3,1) backwards}
+        @keyframes skPop{0%{opacity:0;transform:scale(0) rotate(-18deg);filter:blur(10px)}55%{opacity:1;transform:scale(1.18) rotate(4deg);filter:blur(0)}78%{transform:scale(.94) rotate(-1deg)}100%{transform:scale(1) rotate(0)}}
+        /* goals arrows (real grid items between the cards) */
+        #goals .goals-grid{display:grid;grid-template-columns:1fr;gap:.75rem;align-items:stretch}
+        .goal-arrow{display:flex;align-items:center;justify-content:center;justify-self:center;align-self:center;width:44px;height:44px;border-radius:50%;background:#0b1020;border:2px solid #38bdf8;color:#38bdf8;box-shadow:0 0 18px rgba(56,189,248,.55);font-size:16px}
+        .goal-arrow.pink{border-color:#f472b6;color:#f472b6;box-shadow:0 0 18px rgba(244,114,182,.55)}
+        .goal-arrow i{display:block;transform:rotate(90deg);animation:gaDown 1.3s ease-in-out infinite}
+        @keyframes gaDown{50%{transform:rotate(90deg) translateX(5px)}}
+        @keyframes gaRight{50%{transform:translateX(5px)}}
+        @media(min-width:768px){#goals .goals-grid{grid-template-columns:1fr auto 1fr auto 1fr;gap:1rem}.goal-arrow i{transform:none;animation-name:gaRight}}
+        @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+    </style>
+    <style id="flip-style">
+        .flip-card{perspective:1100px;height:270px;cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:1.5rem}
+        .flip-card:focus-visible{outline:3px solid #38bdf8;outline-offset:4px}
+        .flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,1.25,.4,1)}
+        .flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+        .flip-face{display:flex;flex-direction:column;align-items:center;justify-content:center;backface-visibility:hidden;-webkit-backface-visibility:hidden;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+        .flip-back{transform:rotateY(180deg)}
+        .flip-card:not(.flipped):hover .flip-front{box-shadow:0 0 34px rgba(56,189,248,.25)}
+        @media(max-width:640px){.flip-card{height:250px}}
+    </style>
+	<style id="interactive-fx">
+        /* Project card transitions */
+        .project-card {
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease, opacity 0.4s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.015);
+            border-color: rgba(56, 189, 248, 0.6);
+            box-shadow: 0 16px 36px -10px rgba(56, 189, 248, 0.35);
+        }
+        .project-card .img-zoom {
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s ease;
+        }
+        .project-card:hover .img-zoom {
+            transform: scale(1.08);
+            filter: contrast(1.05) brightness(1.05);
+        }
+        .filter-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .filter-btn.active {
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(244, 114, 182, 0.25));
+            border-color: #38bdf8;
+            color: #ffffff;
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Activity Card interactive transitions */
+        .activity-card {
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+        }
+        .activity-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(56, 189, 248, 0.55);
+            box-shadow: 0 14px 34px -10px rgba(56, 189, 248, 0.3);
+        }
+        .activity-card .act-icon {
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+        }
+        .activity-card:hover .act-icon {
+            transform: scale(1.15) rotate(6deg);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+        }
+        .cheer-btn {
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            user-select: none;
+        }
+        .cheer-btn:hover {
+            transform: scale(1.1);
+        }
+        .cheer-btn:active {
+            transform: scale(0.92);
+        }
+        .cheer-btn.cheered {
+            border-color: #f472b6 !important;
+            background: rgba(244, 114, 182, 0.25) !important;
+            color: #f472b6 !important;
+            box-shadow: 0 0 16px rgba(244, 114, 182, 0.4) !important;
+        }
+
+        /* Lightbox modal for project screenshots */
+        #img-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(4, 7, 16, 0.88);
+            backdrop-filter: blur(14px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+            padding: 1.5rem;
+        }
+        #img-modal.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        #img-modal .modal-content {
+            transform: scale(0.92);
+            transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            max-width: min(92vw, 900px);
+            max-height: 88vh;
+        }
+        #img-modal.open .modal-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="bg-cyber-bg text-slate-100 relative selection:bg-cyan-500 selection:text-slate-900">
+    <!-- FX layer -->
+    <div id="boot" role="presentation"><div class="term">
+        <div class="ln"><b>&gt;</b> Booting Krystil</div>
+        <div class="ln"><b>&gt;</b> Course ........ BSIT</div>
+		<div class="ln"><b>&gt;</b> Year Level ..... 3rd year</div>
+        <div class="ln"><b>&gt;</b> Status ......... curious &amp; learning</div>
+        <div class="ln"><b>&gt;</b> Welcome To My Portfolio!</div>
+        <div class="bootbar"><i id="bootfill"></i></div>
+    </div><button id="bootskip">Enter Portfolio &rarr;</button></div>
+    <div id="prog"></div>
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <button id="totop" aria-label="Back to top"><svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="24" fill="none" stroke="#1e293b" stroke-width="3"/><circle id="totopring" cx="27" cy="27" r="24" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-dasharray="150.8" stroke-dashoffset="150.8"/></svg><span>&uarr;</span></button>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+	
+	<!-- Project Image Lightbox Modal -->
+    <div id="img-modal" role="dialog" aria-modal="true" aria-label="Project Preview Modal">
+        <div class="modal-content glass-card rounded-3xl border border-cyan-500/40 p-5 sm:p-7 relative shadow-neon-cyan flex flex-col">
+            <button id="modal-close" class="absolute top-4 right-4 w-10 h-10 rounded-xl bg-slate-900/80 border border-slate-700 text-slate-300 hover:text-white hover:border-cyan-400 flex items-center justify-center text-lg transition-all" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="max-h-[68vh] overflow-hidden rounded-2xl bg-slate-950 flex items-center justify-center border border-slate-800">
+                <img id="modal-img" src="" alt="Project Preview" class="max-h-[66vh] w-auto max-w-full object-contain">
+            </div>
+            <div class="mt-4 flex items-center justify-between border-t border-slate-800/80 pt-3">
+                <div>
+                    <h3 id="modal-title" class="text-base sm:text-lg font-bold text-white"></h3>
+                    <p id="modal-desc" class="text-xs font-mono text-cyan-400 mt-0.5"></p>
+                </div>
+                <span class="text-[11px] font-mono text-slate-400 hidden sm:inline-block">ESC to close</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Ambient Glows -->
+    <div class="fixed top-0 left-1/4 w-[30rem] h-[30rem] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+    <div class="fixed bottom-1/4 right-1/4 w-[30rem] h-[30rem] bg-pink-500/10 rounded-full blur-3xl pointer-events-none animate-glow" style="animation-delay: 3s;"></div>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-card border-b border-cyan-500/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <!-- Profile Avatar with fallback -->
+                <div class="w-10 h-10 rounded-xl overflow-hidden bg-gradient-to-br from-cyan-400 to-pink-500 flex items-center justify-center font-bold text-slate-950 text-lg shadow-neon-cyan group-hover:scale-105 transition-transform relative">
+                    <img src="profile_pic.jpg" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')" alt="Krystil A. Tapanan" class="w-full h-full object-cover">
+                    <span class="hidden font-mono font-bold text-slate-950 text-sm">KT</span>
+                    
+                </div>
+                <div>
+                    <span class="font-bold text-lg text-white tracking-wide block">Krystil A. Tapanan</span>
+                    <span class="text-xs text-cyan-400 code-font">BSIT 3rd Year Student</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#about" class="text-slate-300 hover:text-cyan-400 transition-colors">About</a>
+                <a href="#education" class="text-slate-300 hover:text-cyan-400 transition-colors">Education</a>			
+                <a href="#projects" class="text-slate-300 hover:text-cyan-400 transition-colors">Projects</a>
+                <a href="#activity" class="text-slate-300 hover:text-cyan-400 transition-colors">Activity</a>
+                <a href="#skills" class="text-slate-300 hover:text-cyan-400 transition-colors">Skills</a>
+                <a href="#hobbies" class="text-slate-300 hover:text-cyan-400 transition-colors">Hobbies</a>
+                <a href="#gallery" class="text-slate-300 hover:text-cyan-400 transition-colors">Moments</a>
+                <a href="#goals" class="text-slate-300 hover:text-cyan-400 transition-colors">Goals</a>
+                <a href="#contact" class="px-4 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 hover:bg-cyan-500/20 hover:shadow-neon-cyan transition-all">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-slate-300 hover:text-cyan-400 focus:outline-none p-2" aria-label="Toggle Navigation Menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-cyan-500/10 px-6 py-4 space-y-3">
+            <a href="#about" class="block text-slate-300 hover:text-cyan-400 py-1 transition-colors mobile-link">About Me</a>
+            <a href="#education" class="block text-slate-300 hover:text-cyan-400 py-1 transition-colors mobile-link">Education</a>
+            <a href="#projects" class="block text-slate-300 hover:text-cyan-400 py-1 transition-colors mobile-link">Projects &amp; School Work</a>
+            <a href="#activity" class="block text-slate-300 hover:text-cyan-400 py-1 transition-colors mobile-link">Activity</a>
+            <a href="#skills" class="block text-slate-300 hover:text-cyan-400 py-1 transition-colors mobile-link">Skills</a>
+            <a href="#hobbies" class="block text-slate-300 hover:text-cyan-400 py-1 transition-colors mobile-link">Hobbies</a>
+            <a href="#gallery" class="block text-slate-300 hover:text-cyan-400 py-1 transition-colors mobile-link">Moments</a>
+            <a href="#goals" class="block text-slate-300 hover:text-cyan-400 py-1 transition-colors mobile-link">Goals</a>
+            <a href="#contact" class="block text-cyan-400 font-semibold py-1 mobile-link">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
+
+        <!-- 1. Hero Header Section -->
+        <section id="hero" class="min-h-[85vh] flex flex-col justify-center items-center text-center relative py-12">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-medium mb-6 shadow-neon-cyan animate-pulse">
+                <i class="fa-solid fa-graduation-cap text-emerald-400"></i>
+                <span>Bachelor of Science in Information Technology • 3rd Year</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+                Hello, I'm <span class="bg-gradient-to-r from-cyan-400 via-pink-400 to-emerald-400 bg-clip-text text-transparent cursor-pointer" title="Click me for a surprise!">Krystil A. Tapanan</span>
+            </h1>
+
+            <!-- Career Direction -->
+            <p class="max-w-2xl text-base sm:text-lg text-slate-300 mb-4 leading-relaxed font-mono">
+                BSIT - 3rd Year Student &amp; Aspiring Tech Professional
+            </p>
+
+            <p class="max-w-xl text-sm sm:text-base text-slate-400 mb-8 leading-relaxed">
+                 Eager to learn, grow, and build a strong foundation in information technology while mastering essential professional skills!
+            </p>
+
+            <!-- Quick Click Links -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <a href="#contact" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-400 to-emerald-400 text-slate-950 font-bold hover:shadow-neon-cyan transition-all flex items-center space-x-2">
+                    <span>Get in Touch</span>
+                    <i class="fa-solid fa-paper-plane text-xs"></i>
+                </a>
+                <a href="#skills" class="px-8 py-3.5 rounded-xl glass-card text-cyan-300 font-semibold hover:border-cyan-400 hover:shadow-neon-cyan transition-all flex items-center space-x-2">
+                    <span>Explore Skills</span>
+                    <i class="fa-solid fa-arrow-down text-sm"></i>
+                </a>
+            </div>
+
+        </section>
+
+        <!-- Ticker -->
+        <div class="tick" aria-hidden="true"><div>WATCH &#127916; &bull; PLAY &#127918; &bull; EAT &#127836; &bull; SLEEP &#128564; &bull; CODE &#128187; &bull; REPEAT &#128257; &bull; WATCH &#127916; &bull; PLAY &#127918; &bull; EAT &#127836; &bull; SLEEP &#128564; &bull; CODE &#128187; &bull; REPEAT &#128257; &bull; WATCH &#127916; &bull; PLAY &#127918; &bull; EAT &#127836; &bull; SLEEP &#128564; &bull; CODE &#128187; &bull; REPEAT &#128257; &bull; WATCH &#127916; &bull; PLAY &#127918; &bull; EAT &#127836; &bull; SLEEP &#128564; &bull; CODE &#128187; &bull; REPEAT &#128257; &bull;&nbsp;</div></div>
+
+        <!-- My Story Section -->
+        <section id="story" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-pink-400 code-font">&#10022;</span>
+                    <span>My Story</span>
+					<span class="text-pink-400 code-font">&#10022;</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+            <div class="tl" id="tl">
+                <div class="tl-fill" id="tlfill"></div>
+                <div class="ch"><div class="dot">&#128161;</div><div class="glass-card p-6 rounded-3xl">
+                    <div class="tag">CHAPTER 1</div><h3>The Spark</h3>
+                    <p class="text-slate-300 leading-relaxed text-justify">It all started with a deep curiosity about how everyday websites, mobile apps, and interactive games function behind the screen. Wondering what made technology tick inspired me to choose Information Technology as my future path. Stepping into this field felt like opening the door to endless creative possibilities.</p>
+                    </div>
+                </div>
+                <div class="ch"><div class="dot">&#128295;</div><div class="glass-card p-6 rounded-3xl">
+                    <div class="tag">CHAPTER 2</div><h3>Building the Foundation</h3>
+                    <p class="text-slate-300 leading-relaxed text-justify">My first two years in college introduced me to core programming principles, networking basics, and relational database systems. I learned how to approach complex problems through logical reasoning, structured debugging, and disciplined patience. Balancing classroom lectures with late-night laboratory activities truly shaped my work ethic and confidence as an IT student.</p>
+                    </div>
+                </div>
+                <div class="ch now"><div class="dot">&#128640;</div><div class="glass-card p-6 rounded-3xl">
+                    <div class="tag">CHAPTER 3</div><h3>Leveling Up<span class="here">I'M HERE</span></h3>
+                    <p class="text-slate-300 leading-relaxed text-justify">Now in my 3rd year, I am actively applying my knowledge through hands-on coursework and university events. Collaborating with peers on system prototypes and engaging in student congresses continuously broadens my perspective. I am dedicated to honing both my technical and soft skills to bridge academic learning with real-world readiness.</p>
+                    </div>
+                </div>
+                <div class="ch"><div class="dot">&#127919;</div><div class="glass-card p-6 rounded-3xl">
+                    <div class="tag">CHAPTER 4</div><h3>What Comes Next</h3>
+                    <p class="text-slate-300 leading-relaxed text-justify">My upcoming milestone is securing an industry internship where I can contribute to real software projects and gain practical workplace experience. From there, I aim to graduate with honors and begin a rewarding career as a tech professional. The foundation is set, and the most exciting chapters of my tech journey are just about to begin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. About Me Section -->
+        <section id="about" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>About Me</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <!-- 1. Left Side: Online Photo Card with Green Status Badge -->
+                <div class="glass-card p-6 rounded-3xl border border-cyan-500/30 text-center relative overflow-hidden group">
+                    <div class="absolute -right-12 -top-12 w-36 h-36 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/25 transition-all"></div>
+                    
+                    <div class="relative w-28 h-28 mx-auto mb-4">
+                        <div class="w-full h-full rounded-2xl overflow-hidden border-2 border-cyan-400/50 shadow-neon-cyan flex items-center justify-center bg-slate-900">
+                            <img src="profile_pic.jpg" onerror="this.style.display='none';this.nextElementSibling.classList.remove('hidden')" alt="Krystil A. Tapanan" class="w-full h-full object-cover">
+                            <div class="hidden flex items-center justify-center w-full h-full font-mono text-2xl font-bold text-cyan-300 bg-gradient-to-tr from-cyan-900 to-slate-900">KT</div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-lg font-bold text-white">Krystil A. Tapanan</h4>
+                    <div class="mt-4 pt-4 border-t border-slate-700/50 text-left space-y-2 text-xs text-slate-300 font-mono">
+                        <div class="flex justify-between"><span>Course:</span> <span class="text-cyan-300">BSIT</span></div>
+                        <div class="flex justify-between"><span>Year Level:</span> <span class="text-cyan-300">3rd Year</span></div>
+                        <div class="flex justify-between"><span>Status:</span> <span class="text-cyan-400">Student</span></div>
+                        <div class="flex justify-between"><span>Age:</span> <span class="text-emerald-400">20</span></div>
+                        <div class="flex justify-between"><span>Birthday:</span> <span class="text-emerald-400">Nov. 28, 2005</span></div>
+                    </div>
+                </div>
+
+                <!-- 2. Right Side: Bio Paragraphs -->
+                <div class="lg:col-span-2 glass-card p-8 rounded-3xl border border-cyan-500/20 space-y-6">
+                    <h3 class="text-xl font-semibold text-cyan-300">Enthusiastic 3rd-Year BSIT Student</h3>
+                    <p class="text-slate-300 leading-relaxed text-justify">
+                        Hello! My name is <strong class="text-white">Krystil A. Tapanan</strong>. I am currently a 3rd-year Bachelor of Science in Information Technology student. While I am still studying and do not have professional work experience yet, I am deeply passionate about expanding my knowledge and preparing myself for future opportunities in the tech world.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed text-justify">
+                        I thrive in collaborative environments, continuously working on strengthening my time management, problem-solving, and communication skills through university coursework and team projects. My goal is to bridge academic learning with practical readiness!
+                    </p>
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <span class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-300 text-xs font-mono border border-cyan-500/20">BSIT - 3rd Year</span>
+                        <span class="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-300 text-xs font-mono border border-emerald-500/20">Web Dev Interest</span>
+                        <span class="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-300 text-xs font-mono border border-purple-500/20">Database Management</span>
+                        <span class="px-3 py-1 rounded-lg bg-pink-500/10 text-pink-300 text-xs font-mono border border-pink-500/20">Team Player</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section id="education" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>Education</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+
+            <div class="glass-card p-8 rounded-3xl border border-cyan-500/20 space-y-8">
+                <div class="flex items-start gap-5">
+                    <div class="w-14 h-14 shrink-0 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-2xl shadow-neon-cyan">🎓</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white">Bachelor of Science in Information Technology</h3>
+                        <p class="text-xs text-cyan-400 font-mono mt-1">Currently in 3rd year • University of Cebu - Main Campus</p>
+                        <p class="text-sm text-slate-300 mt-3">
+                            Work experience: none yet. I am focusing on my studies and looking forward to an internship to gain my first real IT experience.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <div class="text-center text-xs font-mono text-slate-400">
+                        <div class="h-2 rounded-full mb-2 bg-cyan-400"></div>1st year
+                    </div>
+                    <div class="text-center text-xs font-mono text-slate-400">
+                        <div class="h-2 rounded-full mb-2 bg-cyan-400"></div>2nd year
+                    </div>
+                    <div class="text-center text-xs font-mono text-cyan-300">
+                        <div class="h-2 rounded-full mb-2 animate-pulse" style="background:linear-gradient(90deg,#38bdf8 55%,#334155 55%)"></div>3rd year (now)
+                    </div>
+                    <div class="text-center text-xs font-mono text-slate-500">
+                        <div class="h-2 rounded-full mb-2 bg-slate-700"></div>4th year
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-sm font-semibold text-white mb-3">What I'm learning</h4>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 rounded-lg bg-cyan-500/10 text-cyan-300 text-xs font-mono border border-cyan-500/20">Programming</span>
+                        <span class="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-300 text-xs font-mono border border-emerald-500/20">Databases</span>
+                        <span class="px-3 py-1 rounded-lg bg-purple-500/10 text-purple-300 text-xs font-mono border border-purple-500/20">Networking</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Projects & School Work Section -->
+        <section id="projects" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>Projects &amp; School Works</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+
+            <p class="text-center text-slate-400 max-w-xl mx-auto mb-12 text-sm sm:text-base">
+                Since I am a full-time student without work experience yet, these academic projects and class activities showcase my practical skills and dedication.
+            </p>
+
+            <!-- Interactive Category Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-10" id="project-filters">
+                <button type="button" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-mono border border-cyan-500/30 bg-cyan-500/10 text-cyan-300 hover:border-cyan-400" data-filter="all">
+                    <i class="fa-solid fa-layer-group mr-1.5"></i>All Projects (6)
+                </button>
+                <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-mono border border-slate-700 bg-slate-800/60 text-slate-300 hover:border-cyan-400" data-filter="java">
+                    <i class="fa-brands fa-java mr-1.5 text-pink-400"></i>Java &amp; GUI
+                </button>
+                <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-mono border border-slate-700 bg-slate-800/60 text-slate-300 hover:border-cyan-400" data-filter="backend">
+                    <i class="fa-solid fa-database mr-1.5 text-purple-400"></i>DB &amp; CLI
+                </button>
+                <button type="button" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-mono border border-slate-700 bg-slate-800/60 text-slate-300 hover:border-cyan-400" data-filter="systems">
+                    <i class="fa-solid fa-gears mr-1.5 text-amber-400"></i>Systems &amp; OS
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                <!-- Project 1: Pet Adoption System -->
+                <div class="project-card glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all flex flex-col justify-between overflow-hidden group" data-category="java">
+                    <div>
+                        <!-- Project Screenshot Image (Placed above system title) -->
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-5 relative bg-slate-950 border border-cyan-500/30 cursor-pointer project-img-trigger" data-title="Pet Adoption System" data-desc="Java GUI desktop application for pet adoption listings and user authentication." data-src="pet-adoption.png">
+                            <img src="pet-adoption.png" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=700&q=80';" 
+                                 alt="Pet Adoption System Screenshot" 
+                                 class="img-zoom w-full h-full object-cover object-top">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md text-xs font-mono text-cyan-300 border border-cyan-400/50 shadow-neon-cyan flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    <span>Click to Preview</span>
+                                </span>
+                            </div>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md text-[10px] font-mono text-cyan-300 border border-cyan-500/30">
+                                <i class="fa-solid fa-paw mr-1"></i>Java GUI
+                            </span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-lg shadow-neon-cyan shrink-0">
+                                <i class="fa-solid fa-paw"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">Pet Adoption System</h3>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4 text-justify">
+                            A web-based animal shelter platform allowing prospective owners to browse rescue pet profiles, filter by breed or age, and submit online adoption applications.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-700/50 pt-4 space-y-2">
+                        <div class="text-[11px] font-mono text-cyan-400"><strong>Tools:</strong> Java, Java Swing</div>
+                        <div class="text-[11px] font-mono text-slate-300 text-justify"><strong>What I did:</strong> Designed the user login authentication screen, implemented credential input handling, and integrated pet profile views.</div>
+                    </div>
+                </div>
+
+                <!-- Project 2: School Database Schema -->
+                <div class="project-card glass-card p-6 rounded-3xl border border-purple-500/20 hover:border-purple-400/50 transition-all flex flex-col justify-between overflow-hidden group" data-category="backend">
+                    <div>
+                        <!-- Project Screenshot Image (Placed above system title) -->
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-5 relative bg-slate-950 border border-purple-500/30 cursor-pointer project-img-trigger" data-title="School Database Schema" data-desc="MariaDB / MySQL database initialization, DDL/DML scripts, and transaction logging." data-src="database-schema.png">
+                            <img src="database-schema.png" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=700&q=80';" 
+                                 alt="School Database Schema Screenshot" 
+                                 class="img-zoom w-full h-full object-cover object-left-top">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md text-xs font-mono text-purple-300 border border-purple-400/50 shadow-neon-pink flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    <span>Click to Preview</span>
+                                </span>
+                            </div>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md text-[10px] font-mono text-purple-300 border border-purple-500/30">
+                                <i class="fa-solid fa-database mr-1"></i>MariaDB / SQL
+                            </span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-lg shrink-0">
+                                <i class="fa-solid fa-database"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">School Database Schema</h3>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4 text-justify">
+                            A relational database management system lab activity created to handle student enrollment, course curricula, and academic department records.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-700/50 pt-4 space-y-2">
+                        <div class="text-[11px] font-mono text-purple-400"><strong>Tools:</strong> MariaDB, MySQL, Command Line</div>
+                        <div class="text-[11px] font-mono text-slate-300 text-justify"><strong>What I did:</strong> Created database schemas, executed DDL/DML queries, and established primary/foreign key relationships.</div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Payroll Console System -->
+                <div class="project-card glass-card p-6 rounded-3xl border border-emerald-500/20 hover:border-emerald-400/50 transition-all flex flex-col justify-between overflow-hidden group" data-category="backend">
+                    <div>
+                        <!-- Project Screenshot Image (Placed above system title) -->
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-5 relative bg-slate-950 border border-emerald-500/30 cursor-pointer project-img-trigger" data-title="Payroll Console System" data-desc="Python console application with object-oriented salary and work day calculation algorithms." data-src="payroll-system.png">
+                            <img src="payroll-system.png" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=700&q=80';" 
+                                 alt="Payroll Console System Screenshot" 
+                                 class="img-zoom w-full h-full object-cover object-left-top">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md text-xs font-mono text-emerald-300 border border-emerald-400/50 shadow-neon-emerald flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    <span>Click to Preview</span>
+                                </span>
+                            </div>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md text-[10px] font-mono text-emerald-300 border border-emerald-500/30">
+                                <i class="fa-solid fa-terminal mr-1"></i>Python CLI
+                            </span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-lg shadow-neon-emerald shrink-0">
+                                <i class="fa-solid fa-calculator"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-emerald-300 transition-colors">Payroll Console System</h3>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4 text-justify">
+                            A Python terminal program handling employee classification, work day logging, wage rates, and automated payroll calculation.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-700/50 pt-4 space-y-2">
+                        <div class="text-[11px] font-mono text-emerald-400"><strong>Tools:</strong> Python, Windows CLI</div>
+                        <div class="text-[11px] font-mono text-slate-300 text-justify"><strong>What I did:</strong> Developed object-oriented class modules, interactive console numeric option menus, and net salary computation algorithms.</div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Inventory Management System -->
+                <div class="project-card glass-card p-6 rounded-3xl border border-amber-500/20 hover:border-amber-400/50 transition-all flex flex-col justify-between overflow-hidden group" data-category="systems">
+                    <div>
+                        <!-- Project Screenshot Image (Placed above system title) -->
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-5 relative bg-slate-950 border border-amber-500/30 cursor-pointer project-img-trigger" data-title="Inventory Management System" data-desc="Visual Studio application featuring Admin Login, user accounts, and database table setup scripts." data-src="inventory-system.png">
+                            <img src="inventory-system.png" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80';" 
+                                 alt="Inventory Management System Screenshot" 
+                                 class="img-zoom w-full h-full object-cover object-center">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md text-xs font-mono text-amber-300 border border-amber-400/50 flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    <span>Click to Preview</span>
+                                </span>
+                            </div>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md text-[10px] font-mono text-amber-300 border border-amber-500/30">
+                                <i class="fa-solid fa-boxes-stacked mr-1"></i>Visual Studio / SQL
+                            </span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-lg shrink-0">
+                                <i class="fa-solid fa-boxes-stacked"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-amber-300 transition-colors">Inventory Management System</h3>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4 text-justify">
+                            An inventory application developed to track warehouse stock levels, record incoming supplier deliveries, and log product sales.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-700/50 pt-4 space-y-2">
+                        <div class="text-[11px] font-mono text-amber-400"><strong>Tools:</strong> C# / .NET, SQL Server, Visual Studio</div>
+                        <div class="text-[11px] font-mono text-slate-300 text-justify"><strong>What I did:</strong> Built the admin login window, configured `DatabaseSetup.sql` table creation scripts, and handled database user credential verification.</div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Accounting System -->
+                <div class="project-card glass-card p-6 rounded-3xl border border-pink-500/20 hover:border-pink-400/50 transition-all flex flex-col justify-between overflow-hidden group" data-category="java">
+                    <div>
+                        <!-- Project Screenshot Image (Placed above system title) -->
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-5 relative bg-slate-950 border border-pink-500/30 cursor-pointer project-img-trigger" data-title="Accounting System" data-desc="Java Swing interface displaying transaction workflows and the Accounts module." data-src="accounting-system.png">
+                            <img src="accounting-system.png" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80';" 
+                                 alt="Accounting System Screenshot" 
+                                 class="img-zoom w-full h-full object-cover object-center">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md text-xs font-mono text-pink-300 border border-pink-400/50 shadow-neon-pink flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    <span>Click to Preview</span>
+                                </span>
+                            </div>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md text-[10px] font-mono text-pink-300 border border-pink-500/30">
+                                <i class="fa-solid fa-receipt mr-1"></i>Java Swing
+                            </span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 text-lg shadow-neon-pink shrink-0">
+                                <i class="fa-solid fa-receipt"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-pink-300 transition-colors">Accounting System</h3>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4 text-justify">
+                            A Java GUI application with dedicated modules for transaction entry, debit/credit account selection, general journals, ledgers, and balance sheets.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-700/50 pt-4 space-y-2">
+                        <div class="text-[11px] font-mono text-pink-400"><strong>Tools:</strong> Java, Java Swing</div>
+                        <div class="text-[11px] font-mono text-slate-300 text-justify"><strong>What I did:</strong> Designed the Accounts part, the account classification and chart-of-accounts views, and managed records for debit and credit accounts.</div>
+                    </div>
+                </div>
+
+                <!-- Project 6: SJF Dynamic Simulation -->
+                <div class="project-card glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all flex flex-col justify-between overflow-hidden group" data-category="systems">
+                    <div>
+                        <!-- Project Screenshot Image (Placed above system title) -->
+                        <div class="w-full h-48 rounded-2xl overflow-hidden mb-5 relative bg-slate-950 border border-cyan-500/30 cursor-pointer project-img-trigger" data-title="SJF Dynamic Simulation" data-desc="Interactive CPU memory scheduling simulator illustrating Shortest Job First scheduling algorithms." data-src="sjf-simulation.png">
+                            <img src="sjf-simulation.png" 
+                                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=700&q=80';" 
+                                 alt="SJF Simulator Screenshot" 
+                                 class="img-zoom w-full h-full object-cover object-center">
+                            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <span class="px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md text-xs font-mono text-cyan-300 border border-cyan-400/50 shadow-neon-cyan flex items-center space-x-1.5">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                    <span>Click to Preview</span>
+                                </span>
+                            </div>
+                            <span class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 backdrop-blur-md text-[10px] font-mono text-cyan-300 border border-cyan-500/30">
+                                <i class="fa-solid fa-microchip mr-1"></i>OS Simulator
+                            </span>
+                        </div>
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-lg shadow-neon-cyan shrink-0">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">SJF Dynamic Simulation</h3>
+                        </div>
+                        <p class="text-xs text-slate-300 leading-relaxed mb-4 text-justify">
+                            An Operating Systems memory and CPU scheduling simulator modeling Shortest Job First (SJF) execution, arrival burst calculations, and team workflows.
+                        </p>
+                    </div>
+                    <div class="border-t border-slate-700/50 pt-4 space-y-2">
+                        <div class="text-[11px] font-mono text-cyan-400"><strong>Tools:</strong> Java, OS Algorithms</div>
+                        <div class="text-[11px] font-mono text-slate-300 text-justify"><strong>What I did:</strong> Programmed SJF scheduling logic, structured memory management routines, and formatted interactive simulation screens.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 4. Activity Section -->
+        <section id="activity" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>Joined Activity</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+
+            <p class="text-center text-slate-400 max-w-xl mx-auto mb-12 text-sm sm:text-base">
+                Conventions, campus celebrations, and university athletic events I actively engage in to foster leadership, sportsmanship, and community spirit.
+            </p>
+
+            <div class="max-w-3xl mx-auto space-y-6">
+                <!-- ICT Congress Card -->
+                <div class="activity-card glass-card p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden group">
+                    <div class="absolute -right-16 -top-16 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/25 transition-all"></div>
+                
+                    <div class="flex items-start gap-5">
+                        <div class="act-icon w-14 h-14 shrink-0 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-2xl shadow-neon-cyan border border-cyan-500/20">
+                            <i class="fa-solid fa-users-rectangle"></i>
+                        </div>
+                        <div class="space-y-3 flex-grow">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">ICT Student Congress</h3>
+                                <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-mono border border-cyan-500/30">IT Talks</span>
+                            </div>
+                            <p class="text-xs text-cyan-400 font-mono">
+                                Organized by PSITS • University of Cebu - Main Campus
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed text-justify">
+                                Consistently participating in annual ICT Student Congress gatherings. These events provide valuable exposure to emerging technologies, professional IT talks, and networking opportunities with fellow tech enthusiasts and industry professionals.
+                            </p>
+                            <!-- Interactive Tags & Cheer Button -->
+                            <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-700/40">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">Annual Attendance</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">PSITS Member</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">UC Main</span>
+                                </div>
+                                <button type="button" class="cheer-btn px-3.5 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono flex items-center space-x-1.5 hover:bg-cyan-500/20" data-activity="ICT Congress">
+                                    <i class="fa-solid fa-hands-clapping"></i>
+                                    <span>Cheer</span>
+                                    <span class="cheer-count font-bold bg-cyan-500/20 px-1.5 py-0.5 rounded-full ml-1">8</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- University Intramurals Card -->
+                <div class="activity-card glass-card p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden group">
+                    <div class="absolute -right-16 -top-16 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
+                
+                    <div class="flex items-start gap-5">
+                        <div class="act-icon w-14 h-14 shrink-0 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-2xl shadow-neon-cyan border border-cyan-500/20">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <div class="space-y-3 flex-grow">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">University Intramurals</h3>
+                                <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-mono border border-cyan-500/30">Annual Event</span>
+                            </div>
+                            <p class="text-xs text-cyan-400 font-mono">
+                                College of Computer Studies • University of Cebu - Main Campus
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed text-justify">
+                                Actively supporting and participating in inter-departmental athletic competitions, e-sports, and spirit rallies. Cultivated teamwork, sportsmanship, and college pride while cheering on and representing the department.
+                            </p>
+                            <!-- Interactive Tags & Cheer Button -->
+                            <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-700/40">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">Sports &amp; Esports</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">Team Spirit</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">CCS Department</span>
+                                </div>
+                                <button type="button" class="cheer-btn px-3.5 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono flex items-center space-x-1.5 hover:bg-cyan-500/20" data-activity="Intramurals">
+                                    <i class="fa-solid fa-fire text-amber-400"></i>
+                                    <span>Hype</span>
+                                    <span class="cheer-count font-bold bg-cyan-500/20 px-1.5 py-0.5 rounded-full ml-1">12</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UC Days Card -->
+                <div class="activity-card glass-card p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden group">
+                    <div class="absolute -right-16 -top-16 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
+                
+                    <div class="flex items-start gap-5">
+                        <div class="act-icon w-14 h-14 shrink-0 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-2xl shadow-neon-cyan border border-cyan-500/20">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <div class="space-y-3 flex-grow">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">UC Days Celebration</h3>
+                                <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-mono border border-cyan-500/30">Founding Anniversary</span>
+                            </div>
+                            <p class="text-xs text-cyan-400 font-mono">
+                                University-wide Festivities • University of Cebu - Main Campus
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed text-justify">
+                                Engaging in university founding anniversary festivities, student bazaars, cultural presentations, and collaborative campus initiatives celebrating UCian talent and institutional heritage.
+                            </p>
+                            <!-- Interactive Tags & Cheer Button -->
+                            <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-700/40">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">Cultural &amp; Arts</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">Campus Community</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">Anniversary</span>
+                                </div>
+                                <button type="button" class="cheer-btn px-3.5 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono flex items-center space-x-1.5 hover:bg-cyan-500/20" data-activity="UC Days">
+                                    <i class="fa-solid fa-heart text-pink-400"></i>
+                                    <span>Celebrate</span>
+                                    <span class="cheer-count font-bold bg-cyan-500/20 px-1.5 py-0.5 rounded-full ml-1">10</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				<!-- Panagtipon Cultural Showcase Card -->
+                <div class="activity-card glass-card p-8 rounded-3xl border border-cyan-500/30 relative overflow-hidden group">
+                    <div class="absolute -right-16 -top-16 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
+                
+                    <div class="flex items-start gap-5">
+                        <div class="act-icon w-14 h-14 shrink-0 rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-2xl shadow-neon-cyan border border-cyan-500/20">
+                            <i class="fa-solid fa-masks-theater"></i>
+                        </div>
+                        <div class="space-y-3 flex-grow">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition-colors">Panagtipon</h3>
+                                <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 text-xs font-mono border border-cyan-500/30">Performers Showcase</span>
+                            </div>
+                            <p class="text-xs text-cyan-400 font-mono">
+                                Campus Arts &amp; Performance Gathering • University of Cebu
+                            </p>
+                            <p class="text-sm text-slate-300 leading-relaxed text-justify">
+                                Actively participating in and supporting Panagtipon, a vibrant university gathering that brings together diverse student performers, live musical acts, and creative talents across campus to celebrate artistry and community spirit.
+                            </p>
+                            <!-- Interactive Tags & Cheer Button -->
+                            <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-700/40">
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">Live Performances</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">Music &amp; Arts</span>
+                                    <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 text-[11px] font-mono border border-slate-700">UC Community</span>
+                                </div>
+                                <button type="button" class="cheer-btn px-3.5 py-1.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs font-mono flex items-center space-x-1.5 hover:bg-cyan-500/20" data-activity="Panagtipon">
+                                    <i class="fa-solid fa-star text-amber-300"></i>
+                                    <span>Encore</span>
+                                    <span class="cheer-count font-bold bg-cyan-500/20 px-1.5 py-0.5 rounded-full ml-1">7</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Technical & Soft Skills Section -->
+        <section id="skills" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>Technical &amp; Soft Skills</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+
+            <p class="text-center text-slate-400 max-w-xl mx-auto mb-12 text-sm sm:text-base">
+                Core technical tools and professional soft skills with academic examples from my 3rd-year BSIT coursework.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill 1 -->
+                <div class="glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl shadow-neon-cyan">
+                            <i class="fa-brands fa-python"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">Learning</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Programming</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3 text-justify">
+                        Used for writing console menu handlers and object-oriented class modules for lab activities.
+                    </p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="glass-card p-6 rounded-3xl border border-purple-500/20 hover:border-purple-400/50 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-xl">
+                            <i class="fa-solid fa-database"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-300 text-[10px] font-mono border border-purple-500/30">Learning</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">SQL</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3 text-justify">
+                        Applied in database laboratory tasks to create tables, write DDL/DML queries, and manage database schemas.
+                    </p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="glass-card p-6 rounded-3xl border border-emerald-500/20 hover:border-emerald-400/50 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-xl shadow-neon-emerald">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-300 text-[10px] font-mono border border-emerald-500/30">Learning</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">HTML &amp; Web Basics</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3 text-justify">
+                        Utilized for designing responsive web pages, layouts, and wireframe prototypes.
+                    </p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="glass-card p-6 rounded-3xl border border-pink-500/20 hover:border-pink-400/50 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 text-xl shadow-neon-pink">
+                            <i class="fa-solid fa-file-excel"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-pink-500/10 text-pink-300 text-[10px] font-mono border border-pink-500/30">Proficient</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Microsoft Office</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3 text-justify">
+                        Used for formatting project documentation, creating project management artifacts, and organizing test data in Excel and Word.
+                    </p>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="glass-card p-6 rounded-3xl border border-amber-500/20 hover:border-amber-400/50 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-xl">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-300 text-[10px] font-mono border border-amber-500/30">Soft Skill</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Time Management</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3 text-justify">
+                         Effectively balancing academic deadlines, assignments, and personal schedule through disciplined planning.
+                    </p>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">Soft Skill</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Teamwork</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3 text-justify">
+                        Collaborating smoothly with peers on group activities, sharing responsibilities, and achieving shared goals.
+                    </p>
+                </div>
+
+                <!-- Skill 7: Varied Icon -->
+                <div class="glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl shadow-neon-cyan">
+                            <i class="fa-solid fa-lightbulb"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">Soft Skill</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Problem Solving</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3 text-justify">
+                        Approaching technical challenges and assignments with analytical thinking and logical troubleshooting.
+                    </p>
+                </div>
+
+                <!-- Skill 8: Varied Icon -->
+                <div class="glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl">
+                            <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">Soft Skill</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Adaptability</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3 text-justify">
+                        Quickly adapting to new software tools, learning frameworks, and academic requirements with enthusiasm.
+                    </p>
+                </div>
+
+                <!-- Skill 9: Varied Icon -->
+                <div class="glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl shadow-neon-cyan">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-300 text-[10px] font-mono border border-cyan-500/30">Soft Skill</span>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Attention to Detail</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mb-3 text-justify">
+                        Ensuring precision and thoroughness in coding tasks, project instructions, and assignment requirements.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Hobbies & Interests Section -->
+        <section class="py-20 scroll-mt-24" id="hobbies">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>Hobbies &amp; Interests</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+            <p class="text-center text-slate-400 max-w-xl mx-auto mb-12 text-sm sm:text-base">
+                What I enjoy doing during my free time to recharge and relax after long hours of coding and studying.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Hobby 1 -->
+                <div aria-label="Flip card: Watching Movies / Series" aria-pressed="false" class="flip-card" role="button" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-face flip-front absolute inset-0 glass-card p-6 rounded-3xl border border-pink-500/20 hover:border-pink-400/50 transition-all text-center group">
+                            <div class="w-16 h-16 mx-auto rounded-2xl bg-pink-500/10 flex items-center justify-center text-pink-400 text-3xl mb-4 group-hover:scale-110 shadow-neon-pink transition-transform">
+                                <i class="fa-solid fa-film"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Watching Movies / Series</h3>
+                            <span class="text-[11px] text-slate-400 font-mono tracking-wider mt-1">TAP TO FLIP</span>
+                        </div>
+                        <div class="flip-face flip-back absolute inset-0 glass-card p-6 rounded-3xl border border-pink-400/60 text-center" style="background:linear-gradient(160deg,rgba(15,23,42,.97),rgba(30,41,59,.97))">
+                            <h3 class="text-lg font-bold text-pink-300 mb-3">Watching Movies / Series</h3>
+                            <p class="text-sm text-slate-200 leading-relaxed">Exploring captivating stories and cinematic masterpieces to unwind.</p>
+                            <span class="text-[11px] text-slate-500 font-mono tracking-wider mt-4">TAP TO FLIP BACK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobby 2 -->
+                <div aria-label="Flip card: Playing Online Games" aria-pressed="false" class="flip-card" role="button" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-face flip-front absolute inset-0 glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all text-center group">
+                            <div class="w-16 h-16 mx-auto rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-3xl mb-4 group-hover:scale-110 shadow-neon-cyan transition-transform">
+                                <i class="fa-solid fa-gamepad"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Playing Online Games</h3>
+                            <span class="text-[11px] text-slate-400 font-mono tracking-wider mt-1">TAP TO FLIP</span>
+                        </div>
+                        <div class="flip-face flip-back absolute inset-0 glass-card p-6 rounded-3xl border border-cyan-400/60 text-center" style="background:linear-gradient(160deg,rgba(15,23,42,.97),rgba(30,41,59,.97))">
+                            <h3 class="text-lg font-bold text-cyan-300 mb-3">Playing Online Games</h3>
+                            <p class="text-sm text-slate-200 leading-relaxed">Enjoying immersive virtual worlds and strategy-based gameplay with friends.</p>
+                            <span class="text-[11px] text-slate-500 font-mono tracking-wider mt-4">TAP TO FLIP BACK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobby 3 -->
+                <div aria-label="Flip card: Eating" aria-pressed="false" class="flip-card" role="button" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-face flip-front absolute inset-0 glass-card p-6 rounded-3xl border border-amber-500/20 hover:border-amber-400/50 transition-all text-center group">
+                            <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/10 flex items-center justify-center text-amber-400 text-3xl mb-4 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Eating</h3>
+                            <span class="text-[11px] text-slate-400 font-mono tracking-wider mt-1">TAP TO FLIP</span>
+                        </div>
+                        <div class="flip-face flip-back absolute inset-0 glass-card p-6 rounded-3xl border border-amber-400/60 text-center" style="background:linear-gradient(160deg,rgba(15,23,42,.97),rgba(30,41,59,.97))">
+                            <h3 class="text-lg font-bold text-amber-300 mb-3">Eating</h3>
+                            <p class="text-sm text-slate-200 leading-relaxed">Discovering delicious foods and tasting wonderful treats during breaks.</p>
+                            <span class="text-[11px] text-slate-500 font-mono tracking-wider mt-4">TAP TO FLIP BACK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobby 4 -->
+                <div aria-label="Flip card: Sleeping" aria-pressed="false" class="flip-card" role="button" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-face flip-front absolute inset-0 glass-card p-6 rounded-3xl border border-emerald-500/20 hover:border-emerald-400/50 transition-all text-center group">
+                            <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-3xl mb-4 group-hover:scale-110 shadow-neon-emerald transition-transform">
+                                <i class="fa-solid fa-bed"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Sleeping</h3>
+                            <span class="text-[11px] text-slate-400 font-mono tracking-wider mt-1">TAP TO FLIP</span>
+                        </div>
+                        <div class="flip-face flip-back absolute inset-0 glass-card p-6 rounded-3xl border border-emerald-400/60 text-center" style="background:linear-gradient(160deg,rgba(15,23,42,.97),rgba(30,41,59,.97))">
+                            <h3 class="text-lg font-bold text-emerald-300 mb-3">Sleeping</h3>
+                            <p class="text-sm text-slate-200 leading-relaxed">Resting up and recharging energy for productive days ahead.</p>
+                            <span class="text-[11px] text-slate-500 font-mono tracking-wider mt-4">TAP TO FLIP BACK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobby 5 -->
+                <div aria-label="Flip card: Music &amp; K-Pop" aria-pressed="false" class="flip-card" role="button" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-face flip-front absolute inset-0 glass-card p-6 rounded-3xl border border-purple-500/20 hover:border-purple-400/50 transition-all text-center group">
+                            <div class="w-16 h-16 mx-auto rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-400 text-3xl mb-4 group-hover:scale-110 shadow-neon-pink transition-transform">
+                                <i class="fa-solid fa-music"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Music &amp; K-Pop</h3>
+                            <span class="text-[11px] text-slate-400 font-mono tracking-wider mt-1">TAP TO FLIP</span>
+                        </div>
+                        <div class="flip-face flip-back absolute inset-0 glass-card p-6 rounded-3xl border border-purple-400/60 text-center" style="background:linear-gradient(160deg,rgba(15,23,42,.97),rgba(30,41,59,.97))">
+                            <h3 class="text-lg font-bold text-purple-300 mb-3">Music &amp; K-Pop</h3>
+                            <p class="text-sm text-slate-200 leading-relaxed">Following inspiring music, live performances, and uplifting messages from kpop and global artists.</p>
+                            <span class="text-[11px] text-slate-500 font-mono tracking-wider mt-4">TAP TO FLIP BACK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobby 6 -->
+                <div aria-label="Flip card: Photography &amp; Aesthetics" aria-pressed="false" class="flip-card" role="button" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-face flip-front absolute inset-0 glass-card p-6 rounded-3xl border border-pink-500/20 hover:border-pink-400/50 transition-all text-center group">
+                            <div class="w-16 h-16 mx-auto rounded-2xl bg-pink-500/10 flex items-center justify-center text-pink-400 text-3xl mb-4 group-hover:scale-110 shadow-neon-pink transition-transform">
+                                <i class="fa-solid fa-camera-retro"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Photography &amp; Aesthetics</h3>
+                            <span class="text-[11px] text-slate-400 font-mono tracking-wider mt-1">TAP TO FLIP</span>
+                        </div>
+                        <div class="flip-face flip-back absolute inset-0 glass-card p-6 rounded-3xl border border-pink-400/60 text-center" style="background:linear-gradient(160deg,rgba(15,23,42,.97),rgba(30,41,59,.97))">
+                            <h3 class="text-lg font-bold text-pink-300 mb-3">Photography &amp; Aesthetics</h3>
+                            <p class="text-sm text-slate-200 leading-relaxed">Capturing scenic moments, aesthetic visuals, creative layouts and for memories.</p>
+                            <span class="text-[11px] text-slate-500 font-mono tracking-wider mt-4">TAP TO FLIP BACK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobby 7 -->
+                <div aria-label="Flip card: Reading &amp; Stories" aria-pressed="false" class="flip-card" role="button" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-face flip-front absolute inset-0 glass-card p-6 rounded-3xl border border-emerald-500/20 hover:border-emerald-400/50 transition-all text-center group">
+                            <div class="w-16 h-16 mx-auto rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 text-3xl mb-4 group-hover:scale-110 shadow-neon-emerald transition-transform">
+                                <i class="fa-solid fa-book-open-reader"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Reading &amp; Stories</h3>
+                            <span class="text-[11px] text-slate-400 font-mono tracking-wider mt-1">TAP TO FLIP</span>
+                        </div>
+                        <div class="flip-face flip-back absolute inset-0 glass-card p-6 rounded-3xl border border-emerald-400/60 text-center" style="background:linear-gradient(160deg,rgba(15,23,42,.97),rgba(30,41,59,.97))">
+                            <h3 class="text-lg font-bold text-emerald-300 mb-3">Reading &amp; Stories</h3>
+                            <p class="text-sm text-slate-200 leading-relaxed">Immersing in engaging books, and fictional stories during quiet days.</p>
+                            <span class="text-[11px] text-slate-500 font-mono tracking-wider mt-4">TAP TO FLIP BACK</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hobby 8 -->
+                <div aria-label="Flip card: Travel &amp; Exploring" aria-pressed="false" class="flip-card" role="button" tabindex="0">
+                    <div class="flip-inner">
+                        <div class="flip-face flip-front absolute inset-0 glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all text-center group">
+                            <div class="w-16 h-16 mx-auto rounded-2xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-3xl mb-4 group-hover:scale-110 shadow-neon-cyan transition-transform">
+                                <i class="fa-solid fa-plane-departure"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Travel &amp; Exploring</h3>
+                            <span class="text-[11px] text-slate-400 font-mono tracking-wider mt-1">TAP TO FLIP</span>
+                        </div>
+                        <div class="flip-face flip-back absolute inset-0 glass-card p-6 rounded-3xl border border-cyan-400/60 text-center" style="background:linear-gradient(160deg,rgba(15,23,42,.97),rgba(30,41,59,.97))">
+                            <h3 class="text-lg font-bold text-cyan-300 mb-3">Travel &amp; Exploring</h3>
+                            <p class="text-sm text-slate-200 leading-relaxed">Visiting new places, discovering scenic views, and experiencing different cultures and destinations.</p>
+                            <span class="text-[11px] text-slate-500 font-mono tracking-wider mt-4">TAP TO FLIP BACK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		
+        <!-- 7. Moments Slider Section -->
+        <section id="gallery" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>Captured Moments</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+
+            <p class="text-center text-slate-400 max-w-xl mx-auto mb-10 text-sm sm:text-base">
+                A glimpse into campus events, activity sessions, breaks, and memorable travel moments along my journey.
+            </p>
+
+            <!-- Centered Carousel Slider Container -->
+            <div class="max-w-4xl mx-auto flex items-center justify-center gap-3 sm:gap-6 px-2">
+                
+                <!-- Back Button (<) -->
+                <button id="slider-prev" type="button" aria-label="Previous photo" class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl glass-card border border-cyan-500/30 text-cyan-400 text-2xl flex items-center justify-center hover:border-cyan-400 hover:shadow-neon-cyan hover:scale-110 active:scale-95 transition-all shrink-0">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+
+                <!-- Center Image Frame -->
+                <div class="w-full max-w-xl glass-card rounded-3xl overflow-hidden border border-cyan-500/30 shadow-neon-cyan relative flex flex-col">
+                    <!-- Slide Image Display with Fallback Placeholder -->
+                    <div class="relative w-full h-80 sm:h-[420px] bg-slate-950 overflow-hidden flex items-center justify-center">
+                        <img id="slider-img" src="ict-congress-2026.jpg" alt="ICT Student Congress 2026" class="w-full h-full object-cover transition-opacity duration-300">
+                        <div id="slider-fallback" class="hidden absolute inset-0 flex flex-col items-center justify-center text-slate-500 font-mono text-xs p-4 text-center bg-slate-950">
+                            <i class="fa-regular fa-image text-4xl mb-2 text-cyan-400/40"></i>
+                            <span id="slider-fallback-text">Photo preview unavailable</span>
+                        </div>
+                        <span id="slider-tag" class="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-cyan-300 text-xs font-mono border border-cyan-500/30">
+                            Campus Event
+                        </span>
+                    </div>
+
+                    <!-- Slide Caption & Counter -->
+                    <div class="p-5 flex items-center justify-between border-t border-slate-800 bg-slate-900/60">
+                        <div>
+                            <h3 id="slider-title" class="text-base sm:text-lg font-bold text-white">ICT Congress 2026</h3>
+                            <p id="slider-subtitle" class="text-xs font-mono text-cyan-400 mt-0.5">PSITS • UC Main</p>
+                        </div>
+                        <div id="slider-counter" class="text-xs font-mono text-slate-400 px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700">
+                            1 / 12
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Next Button (>) -->
+                <button id="slider-next" type="button" aria-label="Next photo" class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl glass-card border border-cyan-500/30 text-cyan-400 text-2xl flex items-center justify-center hover:border-cyan-400 hover:shadow-neon-cyan hover:scale-110 active:scale-95 transition-all shrink-0">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+
+            </div>
+        </section>
+		
+        <!-- 8. Goals Section -->
+        <section id="goals" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>Goals</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+
+            <div class="goals-grid grid-cols-1">
+                <div class="glass-card p-6 rounded-3xl border border-cyan-500/20 hover:border-cyan-400/50 transition-all">
+                    <div class="text-xs font-mono text-cyan-400 mb-2">NOW</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Finish 3rd year strong</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Learn from every subject and school project.</p>
+                </div>
+                <div class="goal-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+
+                <div class="glass-card p-6 rounded-3xl border border-pink-500/20 hover:border-pink-400/50 transition-all">
+                    <div class="text-xs font-mono text-pink-400 mb-2">NEXT</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Get internship experience</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Gain my first real experience in the IT field.</p>
+                </div>
+                <div class="goal-arrow pink" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+
+                <div class="glass-card p-6 rounded-3xl border border-emerald-500/20 hover:border-emerald-400/50 transition-all">
+                    <div class="text-xs font-mono text-emerald-400 mb-2">LATER</div>
+                    <h3 class="text-lg font-bold text-white mb-2">Graduate and start a career</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">Become a skilled IT professional.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Working Contact Section -->
+        <section id="contact" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>Contact Section</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Info Column -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-bold text-white">Let's Connect!</h3>
+                    <p class="text-slate-300 leading-relaxed">
+                        Whether you are an instructor, a classmate, or someone wanting to connect, feel free to reach out via email, phone, or Facebook!
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <!-- Email Card -->
+                        <a href="mailto:krystiltapanan@gmail.com" class="flex items-center space-x-4 glass-card p-4 rounded-2xl border border-cyan-500/20 hover:border-cyan-400 transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 uppercase tracking-wider">Email Address</div>
+                                <div class="text-sm font-mono text-cyan-300 underline font-medium">krystiltapanan@gmail.com</div>
+                            </div>
+                        </a>
+
+                        <!-- Phone Card -->
+                        <a href="tel:09618858350" class="flex items-center space-x-4 glass-card p-4 rounded-2xl border border-purple-500/20 hover:border-purple-400 transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 uppercase tracking-wider">Contact Number</div>
+                                <div class="text-sm font-mono text-white font-medium">09618858350</div>
+                            </div>
+                        </a> 
+
+                        <!-- Facebook Card -->
+                        <a href="https://www.facebook.com/krystil.tapanan.7" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-4 glass-card p-4 rounded-2xl border border-pink-500/20 hover:border-pink-400 transition-all group">
+                            <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 group-hover:scale-110 transition-transform">
+                                <i class="fa-brands fa-facebook"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400 uppercase tracking-wider">Facebook Profile</div>
+                                <div class="text-sm font-mono text-white font-medium">Krystil Tapanan</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Copy buttons -->
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <button type="button" data-copy="krystiltapanan@gmail.com" class="copy-btn px-5 py-2.5 rounded-xl bg-cyan-500/10 border border-cyan-500/40 text-cyan-300 text-sm font-semibold hover:bg-cyan-500/20 transition-all"><i class="fa-regular fa-copy mr-2"></i><span>Copy email</span></button>
+                        <button type="button" data-copy="09618858350" class="copy-btn px-5 py-2.5 rounded-xl bg-purple-500/10 border border-purple-500/40 text-purple-300 text-sm font-semibold hover:bg-purple-500/20 transition-all"><i class="fa-regular fa-copy mr-2"></i><span>Copy number</span></button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Inspirational Quote & Motto Card -->
+                <div class="glass-card p-8 rounded-3xl border border-cyan-500/30 flex flex-col justify-between space-y-6 relative overflow-hidden group">
+                    <div class="absolute -right-12 -top-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
+                    
+                    <div>
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 text-xl shadow-neon-cyan">
+                                <i class="fa-solid fa-quote-left"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Daily Inspiration</h4>
+                                <p class="text-xs text-cyan-400 font-mono mt-0.5">
+                                    Words to Code By
+                                </p>
+                            </div>
+                        </div>
+                        <blockquote class="text-xs text-slate-300 leading-relaxed italic border-l-2 border-cyan-400 pl-3 my-3">
+                            &ldquo;The best way to predict the future is to create it, one line of logic and one goal at a time.&rdquo;
+                        </blockquote>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Every challenge is just a puzzle waiting to be solved with curiosity, patience, and dedication.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3 pt-4 border-t border-slate-700/50">
+                        <div class="flex justify-between text-xs font-mono">
+                            <span class="text-slate-400">Personal Motto:</span>
+                            <span class="text-cyan-300">Keep Learning, Keep Growing</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-mono">
+                            <span class="text-slate-400">Mindset:</span>
+                            <span class="text-pink-300">Progress Over Perfection</span>
+                        </div>
+                        <div class="flex justify-between text-xs font-mono">
+                            <span class="text-slate-400">Perspective:</span>
+                            <span class="text-emerald-300">Embrace Every Challenge</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-2">
+                        <div class="w-full py-3 px-4 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs text-center font-semibold">
+                            ⭐ Dream big, start small, DO now
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		
+		 <!-- 10. Interactive Mini-Game: Krystil's Vibe & Lifestyle Quiz -->
+        <section id="game" class="py-20 scroll-mt-24">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+                <h2 class="text-2xl sm:text-3xl font-bold tracking-wider text-white uppercase flex items-center space-x-2">
+                    <span class="text-cyan-400 code-font"></span>
+                    <span>How Well Do You Know Me? 🎮</span>
+                </h2>
+                <div class="h-px bg-cyan-500/30 flex-grow"></div>
+            </div>
+
+            <p class="text-center text-slate-400 max-w-xl mx-auto mb-10 text-sm sm:text-base">
+                Take this fun personal lifestyle quiz to see how well you match my favorites, campus life, and travel spots!
+            </p>
+
+            <div class="max-w-2xl mx-auto glass-card p-8 rounded-3xl border border-cyan-500/30 shadow-neon-cyan relative overflow-hidden">
+                <div class="absolute -right-12 -top-12 w-36 h-36 bg-pink-500/10 rounded-full blur-2xl"></div>
+                
+                <div class="text-center space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-300 text-xs font-mono">
+                        <i class="fa-solid fa-heart text-pink-400"></i>
+                        <span>Personal Vibe &amp; Lifestyle Quiz</span>
+                    </div>
+
+                    <h3 id="game-title" class="text-xl font-bold text-white">Question 1: What is my absolute favorite drink to fuel up during study breaks?</h3>
+
+                    <!-- Options Grid -->
+                    <div id="game-options" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Options generated dynamically -->
+                    </div>
+
+                    <div class="flex items-center justify-between pt-4 border-t border-slate-800 text-xs font-mono text-slate-400">
+                        <span id="quiz-score">Score: 0 / 6</span>
+                        <button id="quiz-reset" type="button" class="px-4 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 transition-all cursor-pointer">Restart Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-20 border-t border-cyan-500/10 py-8 text-center text-xs text-slate-500 font-mono">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>© 2026 Krystil A. Tapanan • BSIT 3rd Year Portfolio</div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+    <script id="fx-script">
+    (function(){
+        const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+        const fine = matchMedia('(hover:hover)').matches;
+        const $ = (s, r = document) => r.querySelector(s);
+        const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+
+        /* Toast notification */
+        const toastEl = $('#toast');
+        let tt;
+        function toast(msg) {
+            toastEl.textContent = msg;
+            toastEl.classList.add('on');
+            clearTimeout(tt);
+            tt = setTimeout(() => toastEl.classList.remove('on'), 3400);
+        }
+
+        /* Boot intro */
+        const boot = $('#boot');
+        function endBoot() {
+            if (!boot || boot.classList.contains('off')) return;
+            boot.classList.add('off');
+            setTimeout(() => { if (boot) boot.remove(); }, 600);
+        }
+
+        if (reduce) {
+            if (boot) boot.remove();
+        } else if (boot) {
+            const lines = $$('#boot .ln');
+            const fill = $('#bootfill');
+            let idx = 0;
+            const iv = setInterval(() => {
+                if (idx < lines.length) {
+                    lines[idx].classList.add('on');
+                    idx++;
+                    fill.style.width = (idx / lines.length * 100) + '%';
+                } else {
+                    clearInterval(iv);
+                    setTimeout(endBoot, 500);
+                }
+            }, 400);
+            $('#bootskip').onclick = () => {
+                clearInterval(iv);
+                endBoot();
+            };
+        }
+
+        /* Hero surprise button */
+        const hb = $('#hero .flex.flex-wrap');
+        if (hb) {
+            const facts = [
+                'I can finish a whole series in one weekend.',
+                'My favorite power-up is a good nap.',
+                'Food is my love language.',
+                'Online games are how I practice teamwork and focus.',
+                '3rd year and still just as curious as day one.',
+                'I believe a well-rested brain learns and codes faster.'
+            ];
+            const b1 = document.createElement('button');
+            b1.className = 'fxbtn px-8 py-3.5 rounded-xl glass-card text-pink-300 font-semibold hover:border-pink-400 transition-all flex items-center space-x-2';
+            b1.innerHTML = '<span>Surprise me</span><span>&#127922;</span>';
+            let fi = -1;
+            b1.onclick = () => {
+                let n;
+                do { n = Math.floor(Math.random() * facts.length); } while(n === fi);
+                fi = n;
+                toast('Fun fact: ' + facts[n]);
+            };
+            const a2 = document.createElement('a');
+            a2.href = '#story';
+            a2.className = 'px-8 py-3.5 rounded-xl glass-card text-emerald-300 font-semibold transition-all flex items-center space-x-2';
+            a2.innerHTML = '<span>Read my story</span><span>&darr;</span>';
+            const row = document.createElement('div');
+            row.className = 'flex flex-wrap justify-center gap-4 mb-14 -mt-2';
+            row.appendChild(a2);
+            row.appendChild(b1);
+            hb.parentNode.insertBefore(row, hb.nextSibling);
+        }
+
+        /* Interactive Particle Network Background */
+        const cv = $('#net');
+        const cx = cv.getContext('2d');
+        let W, H, P = [];
+        const m = { x: -999, y: -999 };
+
+        function size() {
+            W = cv.width = innerWidth;
+            H = cv.height = innerHeight;
+            const n = Math.min(85, Math.floor(W * H / 18000));
+            P = Array.from({ length: n }, () => ({
+                x: Math.random() * W,
+                y: Math.random() * H,
+                vx: (Math.random() - .5) * .45,
+                vy: (Math.random() - .5) * .45,
+                c: Math.random() < .5 ? '56,189,248' : '244,114,182'
+            }));
+        }
+        size();
+        addEventListener('resize', size);
+        addEventListener('pointermove', e => { m.x = e.clientX; m.y = e.clientY; });
+
+        function frame() {
+            cx.clearRect(0, 0, W, H);
+            for (let i = 0; i < P.length; i++) {
+                const p = P[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > W) p.vx *= -1;
+                if (p.y < 0 || p.y > H) p.vy *= -1;
+
+                const dx = m.x - p.x;
+                const dy = m.y - p.y;
+                const d = Math.hypot(dx, dy);
+                if (d < 150) {
+                    p.x -= dx * .008;
+                    p.y -= dy * .008;
+                }
+
+                cx.fillStyle = 'rgba(' + p.c + ',.8)';
+                cx.beginPath();
+                cx.arc(p.x, p.y, 1.8, 0, 6.28);
+                cx.fill();
+
+                for (let j = i + 1; j < P.length; j++) {
+                    const q = P[j];
+                    const l = Math.hypot(p.x - q.x, p.y - q.y);
+                    if (l < 130) {
+                        cx.strokeStyle = 'rgba(' + p.c + ',' + (.28 * (1 - l / 130)) + ')';
+                        cx.lineWidth = 1;
+                        cx.beginPath();
+                        cx.moveTo(p.x, p.y);
+                        cx.lineTo(q.x, q.y);
+                        cx.stroke();
+                    }
+                }
+                if (d < 170) {
+                    cx.strokeStyle = 'rgba(251,191,36,' + (.5 * (1 - d / 170)) + ')';
+                    cx.beginPath();
+                    cx.moveTo(p.x, p.y);
+                    cx.lineTo(m.x, m.y);
+                    cx.stroke();
+                }
+            }
+            if (!reduce && !document.hidden) requestAnimationFrame(frame);
+        }
+        frame();
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && !reduce) requestAnimationFrame(frame);
+        });
+
+        /* Scroll Reveal Animations */
+        const items = [];
+        function mark(el, i) {
+            if (reduce) return;
+            el.classList.add('rv');
+            el.style.transitionDelay = (i * 90) + 'ms';
+            items.push(el);
+        }
+        $$('section').forEach(sec => {
+            if (sec.id === 'hero') return;
+            Array.from(sec.children).forEach((c, ci) => {
+                if (sec.id === 'story') { mark(c, 0); return; }
+                if (/grid-cols/.test(c.className)) {
+                    Array.from(c.children).forEach((g, gi) => mark(g, gi % 6));
+                } else mark(c, 0);
+            });
+        });
+        $$('#story .ch').forEach(c => mark(c, 0));
+
+        function scramble(el) {
+            const t = el.textContent;
+            const ch = '!<>-_/[]{}=+*^?#01';
+            let f = 0;
+            const id = setInterval(() => {
+                el.textContent = Array.from(t).map((c, i) => c === ' ' ? ' ' : (i < f / 1.3 ? c : ch[Math.floor(Math.random() * ch.length)])).join('');
+                if (f++ > t.length * 1.3 + 4) {
+                    clearInterval(id);
+                    el.textContent = t;
+                }
+            }, 35);
+        }
+
+        const io = new IntersectionObserver(es => es.forEach(e => {
+            if (!e.isIntersecting) return;
+            const el = e.target;
+            io.unobserve(el);
+            el.classList.add('in');
+            setTimeout(() => {
+                el.classList.remove('rv', 'in');
+                el.style.transitionDelay = '';
+            }, 1200);
+            const h2 = el.matches('h2') ? el : el.querySelector && el.querySelector('h2');
+            if (h2 && !h2.dataset.sc) {
+                h2.dataset.sc = 1;
+                const s = h2.querySelector('span:last-child');
+                if (s && !reduce) scramble(s);
+            }
+        }), { threshold: .15, rootMargin: '0px 0px -6% 0px' });
+        items.forEach(el => io.observe(el));
+
+        /* Card Spotlight & 3D Tilt */
+        $$('.glass-card').forEach(c => {
+            if (c.closest('header') || c.id === 'mobile-menu' || c.classList.contains('flip-face')) return;
+            const tilt = fine && !reduce && !c.querySelector('form,input,textarea');
+            c.addEventListener('pointermove', e => {
+                const r = c.getBoundingClientRect();
+                const x = (e.clientX - r.left) / r.width;
+                const y = (e.clientY - r.top) / r.height;
+                c.style.setProperty('--mx', (x * 100) + '%');
+                c.style.setProperty('--my', (y * 100) + '%');
+                if (tilt && r.width < 760 && !c.classList.contains('rv')) {
+                    c.style.transform = 'perspective(900px) rotateY(' + ((x - .5) * 9) + 'deg) rotateX(' + ((.5 - y) * 9) + 'deg) translateY(-4px)';
+                }
+            });
+            c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+        });
+
+        /* Scroll Progress, Back-to-Top, Active Navbar Spy */
+        const prog = $('#prog');
+        const totop = $('#totop');
+        const ring = $('#totopring');
+        const fillEl = $('#tlfill');
+        const tl = $('#tl');
+        const links = $$('header nav a[href^="#"]');
+        const secs = links.map(a => $(a.getAttribute('href'))).filter(Boolean);
+        let tick = false;
+
+        function onScroll() {
+            const st = scrollY;
+            const mx = document.documentElement.scrollHeight - innerHeight;
+            const p = mx > 0 ? st / mx : 0;
+            prog.style.width = (p * 100) + '%';
+            ring.style.strokeDashoffset = 150.8 * (1 - p);
+            totop.classList.toggle('on', st > 600);
+            let cur = null;
+            secs.forEach(s => {
+                if (s.getBoundingClientRect().top <= 160) cur = s.id;
+            });
+            links.forEach(a => a.classList.toggle('nav-active', a.getAttribute('href') === '#' + cur));
+            if (tl) {
+                const r = tl.getBoundingClientRect();
+                const prog2 = Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / r.height));
+                fillEl.style.height = (prog2 * (r.height - 12)) + 'px';
+                $$('.ch', tl).forEach(c => {
+                    const cr = c.getBoundingClientRect();
+                    c.classList.toggle('lit', cr.top < innerHeight * .62);
+                });
+            }
+            tick = false;
+        }
+        addEventListener('scroll', () => {
+            if (!tick) {
+                tick = true;
+                requestAnimationFrame(onScroll);
+            }
+        }, { passive: true });
+        onScroll();
+        totop.onclick = () => scrollTo({ top: 0, behavior: 'smooth' });
+
+        /* Confetti Effect */
+        const cf = $('#confetti');
+        const cc = cf.getContext('2d');
+        let bits = [], cfRun = false;
+
+        function burst(x, y) {
+            cf.width = innerWidth;
+            cf.height = innerHeight;
+            const cols = ['#38bdf8', '#f472b6', '#34d399', '#fbbf24', '#a78bfa'];
+            for (let i = 0; i < 150; i++) {
+                const a = Math.random() * 6.28;
+                const s = 4 + Math.random() * 9;
+                bits.push({
+                    x: x, y: y,
+                    vx: Math.cos(a) * s,
+                    vy: Math.sin(a) * s - 5,
+                    r: 3 + Math.random() * 5,
+                    c: cols[i % 5],
+                    rot: Math.random() * 6,
+                    life: 0
+                });
+            }
+            if (!cfRun) {
+                cfRun = true;
+                (function f() {
+                    cc.clearRect(0, 0, cf.width, cf.height);
+                    bits = bits.filter(b => b.life < 130);
+                    bits.forEach(b => {
+                        b.life++;
+                        b.vy += .3;
+                        b.x += b.vx;
+                        b.y += b.vy;
+                        b.vx *= .99;
+                        b.rot += .2;
+                        cc.save();
+                        cc.translate(b.x, b.y);
+                        cc.rotate(b.rot);
+                        cc.fillStyle = b.c;
+                        cc.globalAlpha = 1 - b.life / 130;
+                        cc.fillRect(-b.r, -b.r / 2, b.r * 2, b.r);
+                        cc.restore();
+                    });
+                    if (bits.length) requestAnimationFrame(f);
+                    else {
+                        cfRun = false;
+                        cc.clearRect(0, 0, cf.width, cf.height);
+                    }
+                })();
+            }
+        }
+
+        /* Easter Egg on Name Click */
+        const heroName = $('#hero h1 span.bg-clip-text');
+        if (heroName) {
+            heroName.addEventListener('click', e => {
+                const r = heroName.getBoundingClientRect();
+                burst(r.left + r.width / 2, r.top + r.height / 2);
+                toast('🎉 You found a secret! Thanks for visiting my portfolio!');
+            });
+        }
+    })();
+    </script>
+    <script id="skills-pop">
+    (function(){
+        if (matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+        var grid = document.querySelector('#skills .grid');
+        if (!grid) return;
+        var cards = Array.prototype.slice.call(grid.children);
+        var queue = [], busy = false, GAP = 280;
+        cards.forEach(function(c) {
+            c.classList.remove('rv', 'in');
+            c.style.transitionDelay = '';
+            c.classList.add('sk-hide');
+            c._shown = false;
+        });
+        function next() {
+            if (busy || !queue.length) return;
+            var c = queue.shift();
+            if (!c._want) return next();
+            busy = true;
+            c._shown = true;
+            c.classList.remove('sk-hide', 'sk-pop');
+            void c.offsetWidth;
+            c.classList.add('sk-pop');
+            setTimeout(function() { c.classList.remove('sk-pop'); }, 900);
+            setTimeout(function() { busy = false; next(); }, GAP);
+        }
+        var io = new IntersectionObserver(function(es) {
+            es.forEach(function(e) {
+                var c = e.target;
+                if (e.isIntersecting && !c._shown && !c._want) {
+                    c._want = true;
+                    queue.push(c);
+                    queue.sort(function(a, b) { return cards.indexOf(a) - cards.indexOf(b); });
+                    next();
+                } else if (!e.isIntersecting && c._shown) {
+                    c._shown = false;
+                    c._want = false;
+                    c.classList.remove('sk-pop');
+                    c.classList.add('sk-hide');
+                } else if (!e.isIntersecting) {
+                    c._want = false;
+                }
+            });
+        }, { threshold: .15 });
+        cards.forEach(function(c) { io.observe(c); });
+    })();
+    </script>
+    <script id="flip-script">
+    (function(){
+        /* Hobbies: tap (or press Enter / Space) to flip */
+        document.querySelectorAll('.flip-card').forEach(function(c) {
+            function flip() {
+                var on = c.classList.toggle('flipped');
+                c.setAttribute('aria-pressed', on);
+            }
+            c.addEventListener('click', flip);
+            c.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    flip();
+                }
+            });
+        });
+
+        /* Contact: copy email / copy number with feedback */
+        document.querySelectorAll('.copy-btn').forEach(function(b) {
+            var label = b.querySelector('span');
+            var orig = label.textContent;
+            function done(ok) {
+                label.textContent = ok ? 'Copied!' : 'Press and hold to copy';
+                setTimeout(function() { label.textContent = orig; }, 1800);
+            }
+            function fallback(t) {
+                var x = document.createElement('textarea');
+                x.value = t;
+                x.style.position = 'fixed';
+                x.style.opacity = '0';
+                document.body.appendChild(x);
+                x.select();
+                var ok = false;
+                try { ok = document.execCommand('copy'); } catch(e) {}
+                x.remove();
+                done(ok);
+            }
+            b.addEventListener('click', function() {
+                var t = b.dataset.copy;
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(t).then(function() { done(true); }, function() { fallback(t); });
+                } else {
+                    fallback(t);
+                }
+            });
+        });
+    })();
+    </script>
+    <script id="gallery-slider-script">
+    (function() {
+        const photos = [
+            { src: "ict-congress-2026.jpg", tag: "Campus Event", title: "ICT Congress 2026", subtitle: "PSITS • UC Main" },
+            { src: "formal-event.jpg", tag: "Milestone", title: "Acquaintance Party", subtitle: "Memories" },
+            { src: "cafe-round-window.jpg", tag: "Lifestyle", title: "Cafe break", subtitle: "Unwind & Chilling" },
+            { src: "iced-coffee-table.jpg", tag: "Fuel", title: "Coffee Catch-ups", subtitle: "Energy Boost" },
+            { src: "bantayan-camp-sawi.jpg", tag: "Travel", title: "Camp Sawi", subtitle: "Mangrove, Bantayan" },
+            { src: "beautiful-bantayan-swing.jpg", tag: "Scenic", title: "Beautiful Bantayan", subtitle: "Island Horizons" },
+            { src: "heritage-window-smile.jpg", tag: "Portrait", title: "Museum visit", subtitle: "Sunny Smiles" },
+            { src: "valencia-garden.jpg", tag: "Nature", title: "Dumaguete", subtitle: "Valencia Yours, Naturally" },
+            { src: "samg.jpg", tag: "Food", title: "Eating Samg.", subtitle: "Delicious" },
+            { src: "Databaseact.jpg", tag: "Database Act.", title: "Database", subtitle: "Lab Act." },
+            { src: "Siquijor.jpg", tag: "Beach day", title: "Attraction", subtitle: "View" },
+            { src: "Writtenact.jpg", tag: "Foreign Language Act.", title: "Japanese", subtitle: "Learning" }
+        ];
+
+        let current = 0;
+        const imgEl = document.getElementById('slider-img');
+        const fallbackEl = document.getElementById('slider-fallback');
+        const fallbackText = document.getElementById('slider-fallback-text');
+        const tagEl = document.getElementById('slider-tag');
+        const titleEl = document.getElementById('slider-title');
+        const subtitleEl = document.getElementById('slider-subtitle');
+        const counterEl = document.getElementById('slider-counter');
+        const prevBtn = document.getElementById('slider-prev');
+        const nextBtn = document.getElementById('slider-next');
+
+        if (!imgEl) return;
+
+        imgEl.onerror = function() {
+            imgEl.style.opacity = '0';
+            if (fallbackEl) {
+                fallbackEl.classList.remove('hidden');
+                if (fallbackText) fallbackText.textContent = `[${photos[current].title}] photo file not found in folder`;
+            }
+        };
+
+        function showSlide(index) {
+            imgEl.style.opacity = '0';
+            if (fallbackEl) fallbackEl.classList.add('hidden');
+            
+            setTimeout(() => {
+                const item = photos[index];
+                imgEl.src = item.src;
+                imgEl.alt = item.title;
+                tagEl.textContent = item.tag;
+                titleEl.textContent = item.title;
+                subtitleEl.textContent = item.subtitle;
+                counterEl.textContent = `${index + 1} / ${photos.length}`;
+                imgEl.style.opacity = '1';
+            }, 140);
+        }
+
+        prevBtn.addEventListener('click', () => {
+            current = (current - 1 + photos.length) % photos.length;
+            showSlide(current);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            current = (current + 1) % photos.length;
+            showSlide(current);
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevBtn.click();
+            if (e.key === 'ArrowRight') nextBtn.click();
+        });
+    })();
+    </script>
+	<script id="projects-activity-interactive">
+    (function(){
+        /* 1. Project Category Filtering with smooth opacity/scale transitions */
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'border-cyan-500/30', 'bg-cyan-500/10', 'text-cyan-300');
+                    b.classList.add('border-slate-700', 'bg-slate-800/60', 'text-slate-300');
+                });
+                btn.classList.add('active', 'border-cyan-500/30', 'bg-cyan-500/10', 'text-cyan-300');
+                btn.classList.remove('border-slate-700', 'bg-slate-800/60', 'text-slate-300');
+
+                const filter = btn.dataset.filter;
+                projectCards.forEach(card => {
+                    const cat = card.dataset.category;
+                    if (filter === 'all' || cat === filter) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }, 20);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'scale(0.94)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        /* 2. Project Screenshot Lightbox Modal */
+        const modal = document.getElementById('img-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalClose = document.getElementById('modal-close');
+        const triggers = document.querySelectorAll('.project-img-trigger');
+
+        triggers.forEach(trig => {
+            trig.addEventListener('click', () => {
+                const imgEl = trig.querySelector('img');
+                const src = imgEl ? imgEl.src : trig.dataset.src;
+                modalImg.src = src;
+                modalTitle.textContent = trig.dataset.title;
+                modalDesc.textContent = trig.dataset.desc;
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        function closeModal() {
+            if (!modal) return;
+            modal.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        if (modalClose) modalClose.addEventListener('click', closeModal);
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
+        }
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+		
+		/* 3. Joined Activity Cheer / Celebrate Interactive Buttons */
+        const cheerBtns = document.querySelectorAll('.cheer-btn');
+        cheerBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const countSpan = btn.querySelector('.cheer-count');
+                let count = parseInt(countSpan.textContent, 10) || 0;
+                count++;
+                countSpan.textContent = count;
+                btn.classList.add('cheered');
+
+                // Trigger confetti burst at button position
+                const rect = btn.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+
+                // Call global confetti burst if available
+                if (typeof window.triggerConfetti === 'function') {
+                    window.triggerConfetti(x, y);
+                }
+
+                // Show toast message
+                const toastEl = document.getElementById('toast');
+                if (toastEl) {
+                    const actName = btn.dataset.activity || 'Activity';
+                    toastEl.textContent = `🎉 Cheered for ${actName}! (${count} total cheers)`;
+                    toastEl.classList.add('on');
+                    setTimeout(() => toastEl.classList.remove('on'), 2500);
+                }
+            });
+        });
+    })();
+    </script>
+	
+	<script id="quiz-game-script">
+    (function(){
+        const questions = [
+            {
+                q: "Question 1: What is my absolute favorite drink to fuel up during study breaks?",
+                options: [
+                    { text: "A) Hot Chamomile Tea", correct: false },
+                    { text: "B) Iced Coffee", correct: true },
+                    { text: "C) Fresh Coconut Juice", correct: false },
+                    { text: "D) Carbonated Energy Drink", correct: false }
+                ]
+            },
+            {
+                q: "Question 2: Which of these describes my ideal way to unwind after a long week of classes?",
+                options: [
+                    { text: "A) Running a 10km Marathon", correct: false },
+                    { text: "B) Watching Movies & Series / Sleep", correct: true },
+                    { text: "C) Extreme Mountain Climbing", correct: false },
+                    { text: "D) Camping in the Desert", correct: false }
+                ]
+            },
+            {
+                q: "Question 3: Which relaxing food gathering with friends is my go-to favorite?",
+                options: [
+                    { text: "A) Samgyupsal (Samg)", correct: true },
+                    { text: "B) Ultra Spicy Ramen Challenge", correct: false },
+                    { text: "C) Organic Salad Bar", correct: false },
+                    { text: "D) Fastfood Burgers", correct: false }
+                ]
+            },
+            {
+                q: "Question 4: Which beautiful Philippine travel destination is known for mangrove boardwalks and one of the places I visited?",
+                options: [
+                    { text: "A) Batanes", correct: false },
+                    { text: "B) Bantayan Island", correct: true },
+                    { text: "C) Sagada", correct: false },
+                    { text: "D) Baguio City", correct: false }
+                ]
+            },
+            {
+                q: "Question 5: Which annual IT student gathering at University of Cebu do I attend as it talks about IT related stuff?",
+                options: [
+                    { text: "A) National Robotics Olympics", correct: false },
+                    { text: "B) ICT Student Congress", correct: true },
+                    { text: "C) International Cyber Defense Summit", correct: false },
+                    { text: "D) National Animation Festival", correct: false }
+                ]
+            },
+			{
+			q: "Question 6: Which vibrant university event brings together diverse student performers and musical acts across campus?",
+                options: [
+                    { text: "A) Panagtipon", correct: true },
+                    { text: "B) Science Fair", correct: false },
+                    { text: "C) Math Quiz Bowl", correct: false },
+                    { text: "D) Coding Hackathon", correct: false }
+                ]
+            },
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        const titleEl = document.getElementById('game-title');
+        const optionsContainer = document.getElementById('game-options');
+        const scoreEl = document.getElementById('quiz-score');
+        const resetBtn = document.getElementById('quiz-reset');
+
+        if (!titleEl || !optionsContainer) return;
+
+        function loadQuestion() {
+            if (currentQ >= questions.length) {
+                titleEl.textContent = `🎉 Quiz Completed! Your Score: ${score} / ${questions.length}`;
+                
+                let message = "";
+                if (score === questions.length) {
+                    message = "🏆 Perfect Score! You know my lifestyle and vibes to absolute perfection!";
+                } else {
+                    message = "😅 So close! Better luck next time—time to study my favorite things a bit more! 😉";
+                }
+
+                optionsContainer.innerHTML = `
+                    <div class="col-span-2 text-center py-6">
+                        <p class="text-sm text-cyan-300 font-mono mb-4">${message}</p>
+                        <button type="button" id="play-again" class="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-pink-400 text-slate-950 font-bold hover:shadow-neon-cyan transition-all cursor-pointer">Play Again 💖</button>
+                    </div>
+                `;
+                const playAgainBtn = document.getElementById('play-again');
+                if (playAgainBtn) {
+                    playAgainBtn.onclick = () => {
+                        currentQ = 0;
+                        score = 0;
+                        if (scoreEl) scoreEl.textContent = `Score: ${score} / ${questions.length}`;
+                        loadQuestion();
+                    };
+                }
+                return;
+            }
+
+            const qObj = questions[currentQ];
+            titleEl.textContent = qObj.q;
+            optionsContainer.innerHTML = '';
+
+            qObj.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'quiz-option p-4 rounded-2xl glass-card border border-slate-700 hover:border-cyan-400 text-left text-sm font-mono text-slate-200 transition-all cursor-pointer';
+                btn.textContent = opt.text;
+                btn.onclick = () => {
+                    const allBtns = optionsContainer.querySelectorAll('button');
+                    allBtns.forEach(b => b.disabled = true);
+
+                    if (opt.correct) {
+                        score++;
+                        btn.style.borderColor = '#34d399';
+                        btn.style.background = 'rgba(52, 211, 153, 0.25)';
+                        if (typeof window.triggerConfetti === 'function') {
+                            const r = btn.getBoundingClientRect();
+                            window.triggerConfetti(r.left + r.width/2, r.top + r.height/2);
+                        }
+                    } else {
+                        btn.style.borderColor = '#f472b6';
+                        btn.style.background = 'rgba(244, 114, 182, 0.25)';
+                        allBtns.forEach((b, idx) => {
+                            if (qObj.options[idx].correct) {
+                                b.style.borderColor = '#34d399';
+                                b.style.background = 'rgba(52, 211, 153, 0.2)';
+                            }
+                        });
+                    }
+                    if (scoreEl) scoreEl.textContent = `Score: ${score} / ${questions.length}`;
+                    setTimeout(() => {
+                        currentQ++;
+                        loadQuestion();
+                    }, 1100);
+                };
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        if (resetBtn) {
+            resetBtn.onclick = () => {
+                currentQ = 0;
+                score = 0;
+                if (scoreEl) scoreEl.textContent = `Score: ${score} / ${questions.length}`;
+                loadQuestion();
+            };
+        }
+
+        loadQuestion();
+    })();
+    </script>
+
+</body>
+</html>
